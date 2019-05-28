@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css"></link>
     <script src="https://unpkg.com/chai/chai.js"></script>
     <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script type="module">
+      import {pricingData} from "./test/pricing-data.mjs"
+      mocha.fixtures = {pricingData};
+    </script>
   </head>
   <body>
     <div id="component-container">
@@ -45,20 +49,33 @@
         it("does not show display prompt by default", ()=>{
           const hidden =
             document.querySelector("pricing-selector-component")
-            .shadowRoot.querySelector("#displayPrompt").hasAttribute("hidden");
+            .shadowRoot.querySelector("#displayCountSection").hasAttribute("hidden");
 
           chai.assert(hidden);
         });
 
         it("shows display prompt if attribute is set to true", ()=>{
           document.querySelector("pricing-selector-component")
-          .setAttribute("show-display-prompt", "");
+          .setAttribute("show-display-count-section", "");
 
           const hidden =
             document.querySelector("pricing-selector-component")
-            .shadowRoot.querySelector("#displayPrompt").hasAttribute("hidden");
+            .shadowRoot.querySelector("#displayCountSection").hasAttribute("hidden");
 
           chai.assert(!hidden);
+        });
+
+        it("calculates yearly price savings when pricing data is available", ()=>{
+          document.querySelector("pricing-selector-component")
+          .setAttribute("show-period-section", "");
+
+          document.querySelector("pricing-selector-component")
+          .pricingData = mocha.fixtures.pricingData;
+
+          const savings =
+            document.querySelector("pricing-selector-component").yearlySavings;
+
+          chai.assert.equal(savings, "Save $900 every year!");
         });
       });
     </script>
