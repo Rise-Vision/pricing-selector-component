@@ -28,6 +28,7 @@ class PricingSelectorComponent extends PolymerElement {
 
     if (sliderCount === "100") {
       const boxCount = parseInt(this.shadowRoot.getElementById("displayCountBox").value) || 100;
+
       this.set("displayCount", Math.max(boxCount, 100));
       this.shadowRoot.getElementById("displayCountBox").value = this.displayCount;
     } else {
@@ -77,12 +78,14 @@ class PricingSelectorComponent extends PolymerElement {
 
     const monthlyPrice = monthlyPlan.tiers.filter(tier=>{
       const upperPrice = tier.ending_unit ? tier.ending_unit : Number.MAX_SAFE_INTEGER;
-      return tier.starting_unit <= this.displayCount && tier.ending_unit >= this.displayCount;
+
+      return tier.starting_unit <= this.displayCount && upperPrice >= this.displayCount;
     })[0].price;
 
     const yearlyPrice = yearlyPlan.tiers.filter(tier=>{
       const upperPrice = tier.ending_unit ? tier.ending_unit : Number.MAX_SAFE_INTEGER;
-      return tier.starting_unit <= this.displayCount && tier.ending_unit >= this.displayCount;
+
+      return tier.starting_unit <= this.displayCount && upperPrice >= this.displayCount;
     })[0].price;
 
     const savings = (monthlyPrice * 12) - yearlyPrice;
