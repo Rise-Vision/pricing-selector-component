@@ -8,7 +8,7 @@ class PricingSelectorComponent extends PolymerElement {
       displayCount: {type: Number, value: 2, reflectToAttribute: true, notify: true},
       showCountBox: {type: Boolean, value: false},
       showDiscountSection: {type: Boolean, value: false},
-      applyDiscount: {type: Boolean, value: false},
+      applyDiscount: {type: Boolean, value: false, reflectToAttribute: true, notify: true},
       discountPrompt: {type: String, value: "Are you a school or a non-profit?"},
       discountPromptYesText: {type: String, value: "(get a 10% discount)"},
       discountPromptNoText: {type: String, value: ""},
@@ -66,6 +66,7 @@ class PricingSelectorComponent extends PolymerElement {
         }
         .discountOption {
           width: 50%;
+          cursor: pointer;
         }
         .discountOption span {
           font-size: small;
