@@ -11,12 +11,24 @@ UI Component allowing selection of various pricing parameters.
     <script type="module" src="pricing-selector-component.mjs"></script>
   </head>
   <body>
-    <pricing-selector-component></pricing-selector-component>
+    <pricing-selector-component show-display-count-section></pricing-selector-component>
   </body>
 </html>
 ```
 
 The webcomponents-loader.js is a Polymer [requirement](https://polymer-library.polymer-project.org/3.0/docs/polyfills).
+
+# Attribute configuration
+
+ - show-display-count-section
+ - show-discount-section
+ - show-period-section
+
+# Attribute reflection
+
+ - display-count
+ - apply-discount
+ - period
 
 # Demo
 
