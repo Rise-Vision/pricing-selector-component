@@ -10,6 +10,7 @@
     "build": "terser pricing-selector-component.mjs --compesss --mangle --output build/pricing-selector-component.mjs"
   },
   "devDependencies": {
+    "acorn": "^6.1.1",
     "@wdio/cli": "^5.9.1",
     "@wdio/dot-reporter": "^5.7.8",
     "@wdio/local-runner": "^5.9.1",
