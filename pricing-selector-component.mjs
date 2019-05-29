@@ -110,6 +110,11 @@ class PricingSelectorComponent extends PolymerElement {
           border-radius: 4px;
           width: 100%
         }
+        #periodYearly span {
+          background-color: #fcf5bf;
+          font-style: italic;
+          color: #3dbd51;
+        }
         .discountOption {
           width: 50%;
           cursor: pointer;
