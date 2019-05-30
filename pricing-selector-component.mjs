@@ -113,6 +113,7 @@ class PricingSelectorComponent extends PolymerElement {
         #periodYearly span {
           background-color: #fcf5bf;
           font-style: italic;
+          font-weight: bold;
           color: #3dbd51;
         }
         .discountOption {
@@ -121,6 +122,7 @@ class PricingSelectorComponent extends PolymerElement {
         }
         .discountOption span {
           font-size: small;
+          display: inline-block;
         }
         .discountOption[selected] {
           background-color: #e8e8e8;
