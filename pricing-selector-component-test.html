@@ -139,16 +139,12 @@
               ]
             }
           ];
-          document.querySelector("pricing-selector-component")
-          .setAttribute("show-period-section", "");
+          const component = document.querySelector("pricing-selector-component")
 
-          document.querySelector("pricing-selector-component")
-          .pricingData = pricingData;
+          component.setAttribute("show-period-section", "");
+          component.pricingData = pricingData;
 
-          const savings =
-            document.querySelector("pricing-selector-component").yearlySavings;
-
-          chai.assert.equal(savings, "Save $900 every year!");
+          chai.assert.equal(component.yearlySavings, "Save $9.00 every year!");
         });
       });
     </script>

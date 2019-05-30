@@ -19,7 +19,7 @@ class PricingSelectorComponent extends PolymerElement {
       periodYearly: {type: Boolean, computed: "isYearly(period)"},
       periodMonthly: {type: Boolean, computed: "isMonthly(period)"},
       pricingData: {type: Object, value: {}},
-      yearlySavings: {type: String, computed: "getYearlySavings(pricingData)"}
+      yearlySavings: {type: String, computed: "getYearlySavings(pricingData, displayCount)"}
     };
   }
 
@@ -63,7 +63,7 @@ class PricingSelectorComponent extends PolymerElement {
 
   isYearly(period) {return period === "yearly"}
   isMonthly(period) {return period === "monthly"}
-  getYearlySavings(pricingData) {
+  getYearlySavings(pricingData, displayCount) {
     if (Object.keys(pricingData).length === 0) {return "";}
 
     const monthlyPlan = pricingData.filter(plan=>{
@@ -76,21 +76,21 @@ class PricingSelectorComponent extends PolymerElement {
 
     if (!monthlyPlan || !yearlyPlan) {return "";}
 
-    const monthlyPrice = monthlyPlan.tiers.filter(tier=>{
+    const monthlyPricePennies = monthlyPlan.tiers.filter(tier=>{
       const upperPrice = tier.ending_unit ? tier.ending_unit : Number.MAX_SAFE_INTEGER;
 
-      return tier.starting_unit <= this.displayCount && upperPrice >= this.displayCount;
+      return tier.starting_unit <= displayCount && upperPrice >= displayCount;
     })[0].price;
 
-    const yearlyPrice = yearlyPlan.tiers.filter(tier=>{
+    const yearlyPricePennies = yearlyPlan.tiers.filter(tier=>{
       const upperPrice = tier.ending_unit ? tier.ending_unit : Number.MAX_SAFE_INTEGER;
 
-      return tier.starting_unit <= this.displayCount && upperPrice >= this.displayCount;
+      return tier.starting_unit <= displayCount && upperPrice >= displayCount;
     })[0].price;
 
-    const savings = (monthlyPrice * 12) - yearlyPrice;
+    const savingsPennies = (monthlyPricePennies * 12) - yearlyPricePennies;
 
-    return `Save $${savings} every year!`;
+    return `Save $${(savingsPennies / 100).toFixed(2)} every year!`;
   }
 
   static get template() {
