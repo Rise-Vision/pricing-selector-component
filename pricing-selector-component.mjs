@@ -169,7 +169,7 @@ class PricingSelectorComponent extends PolymerElement {
           <div class="promptText">[[displayCountText]]</div>
           <div id="displayCountText" hidden=[[showCountBox]]>[[displayCount]]</div>
           <input type="text" id="displayCountBox" on-change="updateCountBox" hidden=[[!showCountBox]] value=[[displayCount]] />
-          <input id="displayCountSlider" on-input="updateDisplayCount" on-change="updateCountBoxVisibility" type="range" value="{{displayCount}}">
+          <input id="displayCountSlider" min="1" max="100" on-input="updateDisplayCount" on-change="updateCountBoxVisibility" type="range" value="{{displayCount}}">
         </section>
 
         <section id="discountSection" hidden=[[!showDiscountSection]]>
