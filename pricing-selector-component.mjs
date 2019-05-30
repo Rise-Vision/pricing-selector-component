@@ -64,7 +64,7 @@ class PricingSelectorComponent extends PolymerElement {
   isYearly(period) {return period === "yearly"}
   isMonthly(period) {return period === "monthly"}
   getYearlySavings(pricingData, displayCount) {
-    if (Object.keys(pricingData).length === 0) {return "";}
+    if (!pricingData || Object.keys(pricingData).length === 0 || pricingData.failed) {return "";}
 
     const monthlyPlan = pricingData.filter(plan=>{
       return plan.period === 1 && plan.period_unit === "month" && plan.currency_code === "USD";
