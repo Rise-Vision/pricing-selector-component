@@ -23,6 +23,11 @@ class PricingSelectorComponent extends PolymerElement {
     };
   }
 
+  update() {
+    this.updateDisplayCount();
+    this.updateCountBoxVisibility();
+  }
+
   updateDisplayCount() {
     const sliderCount = this.shadowRoot.getElementById("displayCountSlider").value;
 
@@ -34,11 +39,6 @@ class PricingSelectorComponent extends PolymerElement {
     } else {
       this.set("displayCount", sliderCount);
     }
-  }
-
-  updateCountBox() {
-    this.updateDisplayCount();
-    this.updateCountBoxVisibility();
   }
 
   updateCountBoxVisibility() {
@@ -170,8 +170,8 @@ class PricingSelectorComponent extends PolymerElement {
         <section id="displayCountSection" hidden=[[!showDisplayCountSection]]>
           <div class="promptText">[[displayCountText]]</div>
           <div id="displayCountText" hidden=[[showCountBox]]>[[displayCount]]</div>
-          <input type="text" id="displayCountBox" on-change="updateCountBox" hidden=[[!showCountBox]] value=[[displayCount]] />
-          <input id="displayCountSlider" min="1" max="100" on-input="updateDisplayCount" on-change="updateCountBoxVisibility" type="range" value="{{displayCount}}">
+          <input type="text" id="displayCountBox" on-change="update" hidden=[[!showCountBox]] value=[[displayCount]] />
+          <input id="displayCountSlider" min="1" max="100" on-input="update" type="range" value="{{displayCount}}">
         </section>
 
         <section id="discountSection" hidden=[[!showDiscountSection]]>
