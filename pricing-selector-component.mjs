@@ -5,7 +5,7 @@ class PricingSelectorComponent extends PolymerElement {
     return {
       showDisplayCountSection: {type: Boolean, value: false},
       displayCountText: {type: String, value: "How many Displays do you want?"},
-      displayCount: {type: Number, value: 2, reflectToAttribute: true, notify: true},
+      displayCount: {type: Number, value: 5, reflectToAttribute: true, notify: true},
       showCountBox: {type: Boolean, value: false},
       showDiscountSection: {type: Boolean, value: false},
       applyDiscount: {type: Boolean, value: false, reflectToAttribute: true, notify: true},
