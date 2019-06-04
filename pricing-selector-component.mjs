@@ -154,26 +154,78 @@ class PricingSelectorComponent extends PolymerElement {
           width: 4em;
           margin: 0.5em 0;
         }
-        input[type=range] {
-          -webkit-appearance: none;
-          height: 12px;
-          width: 100%;
+        [type='range'] {
           margin: 0;
-          padding-top: 0.5em;
+          outline: none;
+          padding: 0;
+          width: 100%;
+          height: 1.5em;
+          background: transparent;
+          font: 1em/1 arial, sans-serif;
         }
-        input[type=range]::-webkit-slider-thumb {
+        [type='range'], [type='range']::-webkit-slider-thumb {
           -webkit-appearance: none;
-          height: 20px;
-          width: 20px;
+        }
+        [type='range']::-webkit-slider-runnable-track {
+          box-sizing: border-box;
+          border: solid 2px rgb(151, 151, 151);
+          border-radius: 0.5em;
+          width: 100%;
+          height: 0.75em;
+          background: transparent;
+        }
+        [type='range']::-moz-range-track {
+          box-sizing: border-box;
+          border: solid 2px rgb(151, 151, 151);
+          width: 100%;
+          height: 0.75em;
+          border-radius: 0.5em;
+          background: transparent;
+        }
+        [type='range']::-ms-track {
+          box-sizing: border-box;
+          border: solid 2px rgb(151, 151, 151);
+          width: 100%;
+          height: 0.75em;
+          border-radius: 0.5em;
+          background: transparent;
+        }
+        [type='range']::-moz-range-progress {
+          height: 0.25em;
+          background: transparent;
+        }
+        [type='range']::-ms-fill-lower {
+          height: 0.25em;
+          background: transparent;
+        }
+        [type='range']::-webkit-slider-thumb {
+          margin-top: -0.45em;
+          box-sizing: border-box;
+          border: none;
+          width: 1.5em;
+          height: 1.5em;
           border-radius: 50%;
           background: rgb(16, 125, 218);
-          margin-top: -6px;
         }
-        input[type=range]::-webkit-slider-runnable-track {
-          width: 100%;
-          height: 10px;
-          border: solid 2px rgb(151, 151, 151);
-          border-radius: 3px;
+        [type='range']::-moz-range-thumb {
+          box-sizing: border-box;
+          border: none;
+          width: 1.5em;
+          height: 1.5em;
+          border-radius: 50%;
+          background: rgb(16, 125, 218);
+        }
+        [type='range']::-ms-thumb {
+          margin-top: 0;
+          box-sizing: border-box;
+          border: none;
+          width: 1.5em;
+          height: 1.5em;
+          border-radius: 50%;
+          background: rgb(16, 125, 218);
+        }
+        [type='range']::-ms-tooltip {
+          display: none;
         }
       </style>
       <div id="main">
