@@ -90,14 +90,14 @@ class PricingSelectorComponent extends PolymerElement {
 
     const savingsPennies = (monthlyPricePennies * 12) - yearlyPricePennies;
 
-    return `Save $${(savingsPennies / 100).toFixed(2)} every year!`;
+    return `(save $${(savingsPennies / 100).toFixed(2)} every year!)`;
   }
 
   static get template() {
     return html`
       <style>
         #main {
-          width: 25em;
+          width: 100%;
           text-align: center;
         }
         section {
@@ -105,10 +105,11 @@ class PricingSelectorComponent extends PolymerElement {
         }
         .toggleContainer {
           display: flex;
-          align-items: stretch;
+          align-items: center;
           border: solid 1px #292b2c;
           border-radius: 4px;
-          width: 100%
+          width: 100%;
+          height: 3em;
         }
         #periodYearly span {
           background-color: #fcf5bf;
@@ -118,18 +119,27 @@ class PricingSelectorComponent extends PolymerElement {
         }
         .discountOption {
           width: 50%;
+          height: 100%;
           cursor: pointer;
-        }
-        .discountOption span {
-          font-size: small;
-          display: inline-block;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.5em;
+          box-sizing: border-box;
         }
         .discountOption[selected] {
           background-color: #e8e8e8;
         }
-        .discountOption[selected]::after {
-          content: "\\002714";
-          margin: 0.5em;
+        @media (max-width: 767px) {
+          #periodContainer {
+            flex-direction: column;
+            text-align: left;
+            height: 6em;
+          }
+          .discountOption {
+            width: 100%;
+            padding
+          }
         }
         .promptText {
           font-weight: bold;
@@ -177,15 +187,35 @@ class PricingSelectorComponent extends PolymerElement {
         <section id="discountSection" hidden=[[!showDiscountSection]]>
           <div class="promptText">[[discountPrompt]]</div>
           <div id=discountContainer class="toggleContainer">
-            <div id="discountYes" on-click="discountYes" class="discountOption" selected$=[[applyDiscount]]>Yes <span>[[discountPromptYesText]]</span></div>
-            <div id="discountNo" on-click="discountNo" class="discountOption" selected$=[[!applyDiscount]]>No [[discountPromptNoText]]</div>
+            <div id="discountYes" on-click="discountYes" class="discountOption" selected$=[[applyDiscount]]>
+              Yes [[discountPromptYesText]]
+              <div hidden$=[[!applyDiscount]]>
+                &#10004;
+              </div>
+            </div>
+            <div id="discountNo" on-click="discountNo" class="discountOption" selected$=[[!applyDiscount]]>
+              No [[discountPromptNoText]]
+              <div hidden$=[[applyDiscount]]>
+                &#10004;
+              </div>
+            </div>
           </div>
         </section>
 
         <section id="periodSection" hidden=[[!showPeriodSection]]>
           <div id=periodContainer class="toggleContainer">
-            <div id="periodYearly" on-click="setYearly" class="discountOption" selected$=[[periodYearly]]>[[periodYearlyText]] <span>[[yearlySavings]]</span></div>
-            <div id="periodMonthly" on-click="setMonthly" class="discountOption" selected$=[[periodMonthly]]><div>[[periodMonthlyText]]</div></div>
+            <div id="periodYearly" on-click="setYearly" class="discountOption" selected$=[[periodYearly]]>
+              [[periodYearlyText]] [[yearlySavings]]
+              <div hidden$=[[!periodYearly]]>
+                &#10004;
+              </div>
+            </div>
+            <div id="periodMonthly" on-click="setMonthly" class="discountOption" selected$=[[periodMonthly]]>
+              [[periodMonthlyText]]
+              <div hidden$=[[periodYearly]]>
+                &#10004;
+              </div>
+            </div>
           </div>
         </section>
       </div>
