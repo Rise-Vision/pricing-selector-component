@@ -106,7 +106,7 @@ class PricingSelectorComponent extends PolymerElement {
         .toggleContainer {
           display: flex;
           align-items: center;
-          border: solid 1px #292b2c;
+          border: solid 1px rgb(16, 125, 218);
           border-radius: 4px;
           width: 100%;
           height: 3em;
@@ -128,7 +128,8 @@ class PricingSelectorComponent extends PolymerElement {
           box-sizing: border-box;
         }
         .discountOption[selected] {
-          background-color: #e8e8e8;
+          background-color: rgb(16, 125, 218);
+          color: white;
         }
         @media (max-width: 767px) {
           #periodContainer {
@@ -165,13 +166,13 @@ class PricingSelectorComponent extends PolymerElement {
           height: 20px;
           width: 20px;
           border-radius: 50%;
-          background: black;
-          margin-top: -5;
+          background: rgb(16, 125, 218);
+          margin-top: -6px;
         }
         input[type=range]::-webkit-slider-runnable-track {
           width: 100%;
           height: 10px;
-          background: #e8e8e8;
+          border: solid 2px rgb(151, 151, 151);
           border-radius: 3px;
         }
       </style>
