@@ -111,6 +111,10 @@ class PricingSelectorComponent extends PolymerElement {
           width: 100%;
           height: 3em;
         }
+        .displayCount {
+          font-size: 3em;
+          font-weight: bold;
+        }
         #periodYearly span {
           background-color: #fcf5bf;
           font-style: italic;
@@ -145,6 +149,7 @@ class PricingSelectorComponent extends PolymerElement {
         .promptText {
           font-weight: bold;
           margin-bottom: 0.5em;
+          font-size:1.3em;
         }
         #displayCountSlider {
           outline: none
@@ -232,8 +237,8 @@ class PricingSelectorComponent extends PolymerElement {
 
         <section id="displayCountSection" hidden=[[!showDisplayCountSection]]>
           <div class="promptText">[[displayCountText]]</div>
-          <div id="displayCountText" hidden=[[showCountBox]]>[[displayCount]]</div>
-          <input type="text" id="displayCountBox" on-change="update" hidden=[[!showCountBox]] value=[[displayCount]] />
+          <div id="displayCountText" class="displayCount" hidden=[[showCountBox]]>[[displayCount]]</div>
+          <input type="text" class="displayCount" id="displayCountBox" on-change="update" hidden=[[!showCountBox]] value=[[displayCount]] />
           <input id="displayCountSlider" min="1" max="100" on-input="update" type="range" value="{{displayCount}}">
         </section>
 
