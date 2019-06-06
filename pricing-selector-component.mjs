@@ -100,9 +100,6 @@ class PricingSelectorComponent extends PolymerElement {
           width: 100%;
           text-align: center;
         }
-        section {
-          margin-bottom: 2em;
-        }
         .toggleContainer {
           display: flex;
           align-items: center;
