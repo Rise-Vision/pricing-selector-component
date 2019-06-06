@@ -106,7 +106,6 @@ class PricingSelectorComponent extends PolymerElement {
           border: solid 1px rgb(16, 125, 218);
           border-radius: 4px;
           width: 100%;
-          height: 3em;
         }
         .displayCount {
           font-size: 3em;
