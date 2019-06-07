@@ -90,7 +90,9 @@ class PricingSelectorComponent extends PolymerElement {
 
     const savingsPennies = (monthlyPricePennies * 12) - yearlyPricePennies;
 
-    return `(save $${(savingsPennies / 100).toFixed(2)} every year!)`;
+    const totalSavings = savingsPennies / 100 * displayCount;
+
+    return `(save $${(totalSavings).toFixed(2)} every year!)`;
   }
 
   static get template() {
