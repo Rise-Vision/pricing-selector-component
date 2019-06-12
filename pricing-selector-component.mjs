@@ -104,7 +104,7 @@ class PricingSelectorComponent extends PolymerElement {
         }
         .toggleContainer {
           display: flex;
-          align-items: center;
+          align-items: stretch;
           border: solid 1px rgb(16, 125, 218);
           border-radius: 4px;
           width: 100%;
@@ -121,7 +121,6 @@ class PricingSelectorComponent extends PolymerElement {
         }
         .discountOption {
           width: 50%;
-          height: 100%;
           cursor: pointer;
           display: flex;
           align-items: center;
@@ -133,29 +132,34 @@ class PricingSelectorComponent extends PolymerElement {
           background-color: rgb(16, 125, 218);
           color: white;
         }
+        .promptText {
+          font-weight: bold;
+          margin-bottom: 0.5em;
+          font-size:1.3em;
+        }
         @media (max-width: 767px) {
           #periodContainer {
             flex-direction: column;
+            justify-content: space-between;
             text-align: left;
-            height: 6em;
           }
           .discountOption {
             width: 100%;
             padding
           }
-        }
-        .promptText {
-          font-weight: bold;
-          margin-bottom: 0.5em;
-          font-size:1.3em;
+          .displayCount {
+            font-size: 1.5em;
+          }
+          .promptText {
+            font-size: 1em;
+          }
         }
         #displayCountSlider {
           outline: none
         }
         #displayCountBox {
           text-align: center;
-          width: 4em;
-          margin: 0.5em 0;
+          width: 3em;
         }
         [type='range'] {
           margin: 0;
