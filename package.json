@@ -6,7 +6,7 @@
     "lint": "eslint pricing-selector-component.mjs",
     "pretest-ci": "npm run lint",
     "test-ci": "wdio wdio.conf.js",
-    "prebuild": "mkdir -p build && cp pricing-selector-component-test.html build",
+    "prebuild": "mkdir -p build && cp *.svg pricing-selector-component-test.html build",
     "build": "terser pricing-selector-component.mjs --compesss --mangle --output build/pricing-selector-component.mjs"
   },
   "devDependencies": {
