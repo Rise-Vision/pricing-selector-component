@@ -23,6 +23,10 @@ class PricingSelectorComponent extends PolymerElement {
     };
   }
 
+  static get importMeta() {
+    return import.meta;
+  }
+
   updateSlider() {
     const sliderCount = this.shadowRoot.getElementById("displayCountSlider").value;
 
@@ -245,13 +249,13 @@ class PricingSelectorComponent extends PolymerElement {
             <div id="discountYes" on-click="discountYes" class="discountOption" selected$=[[applyDiscount]]>
               Yes [[discountPromptYesText]]
               <div hidden$=[[!applyDiscount]]>
-                <img src="check-mark.svg" />
+                <img src$="[[importPath]]check-mark.svg" />
               </div>
             </div>
             <div id="discountNo" on-click="discountNo" class="discountOption" selected$=[[!applyDiscount]]>
               No [[discountPromptNoText]]
               <div hidden$=[[applyDiscount]]>
-                <img src="check-mark.svg" />
+                <img src$="[[importPath]]check-mark.svg" />
               </div>
             </div>
           </div>
@@ -262,13 +266,13 @@ class PricingSelectorComponent extends PolymerElement {
             <div id="periodYearly" on-click="setYearly" class="discountOption" selected$=[[periodYearly]]>
               [[periodYearlyText]] [[yearlySavings]]
               <div hidden$=[[!periodYearly]]>
-                <img src="check-mark.svg" />
+                <img src$="[[importPath]]check-mark.svg" />
               </div>
             </div>
             <div id="periodMonthly" on-click="setMonthly" class="discountOption" selected$=[[periodMonthly]]>
               [[periodMonthlyText]]
               <div hidden$=[[periodYearly]]>
-                <img src="check-mark.svg" />
+                <img src$="[[importPath]]check-mark.svg" />
               </div>
             </div>
           </div>
