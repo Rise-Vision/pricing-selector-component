@@ -23,26 +23,20 @@ class PricingSelectorComponent extends PolymerElement {
     };
   }
 
-  update() {
-    this.updateDisplayCount();
-    this.updateCountBoxVisibility();
-  }
-
-  updateDisplayCount() {
+  updateSlider() {
     const sliderCount = this.shadowRoot.getElementById("displayCountSlider").value;
 
-    if (sliderCount === "100") {
-      const boxCount = parseInt(this.shadowRoot.getElementById("displayCountBox").value) || 100;
+    this.set("displayCount", sliderCount);
 
-      this.set("displayCount", Math.max(boxCount, 100));
-      this.shadowRoot.getElementById("displayCountBox").value = this.displayCount;
-    } else {
-      this.set("displayCount", sliderCount);
+    if (this.displayCount >= 100) {
+      this.set("showCountBox", true);
     }
   }
 
-  updateCountBoxVisibility() {
-    this.set("showCountBox", parseInt(this.displayCount) >= 100);
+  updateBox() {
+    const boxCount = parseInt(this.shadowRoot.getElementById("displayCountBox").value) || 0;
+
+    this.set("displayCount", boxCount);
   }
 
   discountYes() {
@@ -65,6 +59,7 @@ class PricingSelectorComponent extends PolymerElement {
   isMonthly(period) {return period === "monthly"}
   getYearlySavings(pricingData, displayCount) {
     if (!pricingData || Object.keys(pricingData).length === 0 || pricingData.failed) {return "";}
+    if (displayCount === 0) {return "";}
 
     const monthlyPlan = pricingData.filter(plan=>{
       return plan.period === 1 && plan.period_unit === "month" && plan.currency_code === "USD";
@@ -240,8 +235,8 @@ class PricingSelectorComponent extends PolymerElement {
         <section id="displayCountSection" hidden=[[!showDisplayCountSection]]>
           <div class="promptText">[[displayCountText]]</div>
           <div id="displayCountText" class="displayCount" hidden=[[showCountBox]]>[[displayCount]]</div>
-          <input type="text" class="displayCount" id="displayCountBox" on-change="update" hidden=[[!showCountBox]] value=[[displayCount]] />
-          <input id="displayCountSlider" min="1" max="100" on-input="update" type="range" value="{{displayCount}}">
+          <input type="text" class="displayCount" id="displayCountBox" on-input="updateBox" hidden=[[!showCountBox]] value=[[displayCount]] />
+          <input id="displayCountSlider" min="1" max="100" on-input="updateSlider" type="range" value="{{displayCount}}">
         </section>
 
         <section id="discountSection" hidden=[[!showDiscountSection]]>
