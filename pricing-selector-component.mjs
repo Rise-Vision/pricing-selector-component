@@ -23,8 +23,8 @@ class PricingSelectorComponent extends PolymerElement {
     };
   }
 
-  static get importMeta() {
-    return import.meta;
+  internalPath() {
+    return "https://widgets.risevision.com/stable/components/pricing/";
   }
 
   updateSlider() {
@@ -249,13 +249,13 @@ class PricingSelectorComponent extends PolymerElement {
             <div id="discountYes" on-click="discountYes" class="discountOption" selected$=[[applyDiscount]]>
               Yes [[discountPromptYesText]]
               <div hidden$=[[!applyDiscount]]>
-                <img src$="[[importPath]]check-mark.svg" />
+                <img src$="[[internalPath()]]check-mark.svg" />
               </div>
             </div>
             <div id="discountNo" on-click="discountNo" class="discountOption" selected$=[[!applyDiscount]]>
               No [[discountPromptNoText]]
               <div hidden$=[[applyDiscount]]>
-                <img src$="[[importPath]]check-mark.svg" />
+                <img src$="[[internalPath()]]check-mark.svg" />
               </div>
             </div>
           </div>
@@ -266,13 +266,13 @@ class PricingSelectorComponent extends PolymerElement {
             <div id="periodYearly" on-click="setYearly" class="discountOption" selected$=[[periodYearly]]>
               [[periodYearlyText]] [[yearlySavings]]
               <div hidden$=[[!periodYearly]]>
-                <img src$="[[importPath]]check-mark.svg" />
+                <img src$="[[internalPath()]]check-mark.svg" />
               </div>
             </div>
             <div id="periodMonthly" on-click="setMonthly" class="discountOption" selected$=[[periodMonthly]]>
               [[periodMonthlyText]]
               <div hidden$=[[periodYearly]]>
-                <img src$="[[importPath]]check-mark.svg" />
+                <img src$="[[internalPath()]]check-mark.svg" />
               </div>
             </div>
           </div>
