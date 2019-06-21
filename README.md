@@ -4,6 +4,8 @@ UI Component allowing selection of various pricing parameters.
 
 # Usage
 
+As a no-build html module import.
+
 ``` html
 <html>
   <head>
@@ -16,7 +18,20 @@ UI Component allowing selection of various pricing parameters.
 </html>
 ```
 
+As a node import
+
+``` bash
+npm install Rise-Vision/pricing-selector-component
+```
+
+Then in a parent component that is an entry point for a bundler
+
+``` js
+import "pricing-selector-component/lib/pricing-selector-component.js"
+```
+
 The webcomponents-loader.js is a Polymer [requirement](https://polymer-library.polymer-project.org/3.0/docs/polyfills).
+It is required in both cases.
 
 # Attribute configuration
 
@@ -34,14 +49,22 @@ The webcomponents-loader.js is a Polymer [requirement](https://polymer-library.p
 
 Start a local http server and load pricing-selector-component-demo.html in browser.
 
-# Testing
+# Development
 
-### Live browser test
+Change the .mjs file then test, build, commit.
+
+`npm run build` will update the `lib` dir and merging that to master is a release for the node library.
+
+The html import is deployed as part of the circle-ci job via GCS update.
+
+### Testing
+
+#### Live browser test
 
 Start a local http server and then browse to pricing-selector-component-test.html.
 It's best to load with devtools open and cache disabled.
 
-## Webdriver test
+#### Webdriver test
 
 Start a local http server.
 
