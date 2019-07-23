@@ -109,7 +109,7 @@ class PricingSelectorComponent extends PolymerElement {
           width: 100%;
         }
         .displayCount {
-          font-size: 3em;
+          font-size: 48px;
           font-weight: bold;
         }
         #periodYearly span {
@@ -147,7 +147,7 @@ class PricingSelectorComponent extends PolymerElement {
             padding
           }
           .displayCount {
-            font-size: 1.5em;
+            font-size: 24px;
           }
           .promptText {
             font-size: 1em;
@@ -165,7 +165,7 @@ class PricingSelectorComponent extends PolymerElement {
           outline: none;
           padding: 0;
           width: 100%;
-          height: 1.5em;
+          height: 30px;
           background: transparent;
           font: 1em/1 arial, sans-serif;
         }
@@ -205,19 +205,19 @@ class PricingSelectorComponent extends PolymerElement {
           background: transparent;
         }
         [type='range']::-webkit-slider-thumb {
-          margin-top: -0.45em;
+          margin-top: -10px;
           box-sizing: border-box;
           border: none;
-          width: 1.5em;
-          height: 1.5em;
+          width: 30px;
+          height: 30px;
           border-radius: 50%;
           background: rgb(16, 125, 218);
         }
         [type='range']::-moz-range-thumb {
           box-sizing: border-box;
           border: none;
-          width: 1.5em;
-          height: 1.5em;
+          width: 30px;
+          height: 30px;
           border-radius: 50%;
           background: rgb(16, 125, 218);
         }
@@ -225,8 +225,8 @@ class PricingSelectorComponent extends PolymerElement {
           margin-top: 0;
           box-sizing: border-box;
           border: none;
-          width: 1.5em;
-          height: 1.5em;
+          width: 30px;
+          height: 30px;
           border-radius: 50%;
           background: rgb(16, 125, 218);
         }
