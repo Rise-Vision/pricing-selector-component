@@ -13,13 +13,12 @@ class PricingSelectorComponent extends PolymerElement {
       discountPromptYesText: {type: String, value: "(get a 10% discount)"},
       discountPromptNoText: {type: String, value: ""},
       showPeriodSection: {type: Boolean, value: false},
-      periodYearlyText: {type: String, value: "I want to pay yearly"},
+      periodYearlyText: {type: String, value: "I want to pay yearly (save 50% for the first year)"},
       periodMonthlyText: {type: String, value: "I want to pay monthly"},
       period: {type: String, value: "yearly", reflectToAttribute: true, notify: true},
       periodYearly: {type: Boolean, computed: "isYearly(period)"},
       periodMonthly: {type: Boolean, computed: "isMonthly(period)"},
       pricingData: {type: Object, value: {}},
-      yearlySavings: {type: String, computed: "getYearlySavings(pricingData, displayCount)"}
     };
   }
 
@@ -61,38 +60,6 @@ class PricingSelectorComponent extends PolymerElement {
 
   isYearly(period) {return period === "yearly"}
   isMonthly(period) {return period === "monthly"}
-  getYearlySavings(pricingData, displayCount) {
-    if (!pricingData || Object.keys(pricingData).length === 0 || pricingData.failed) {return "";}
-    if (displayCount === 0) {return "";}
-
-    const monthlyPlan = pricingData.filter(plan=>{
-      return plan.period === 1 && plan.period_unit === "month" && plan.currency_code === "USD";
-    })[0];
-
-    const yearlyPlan = pricingData.filter(plan=>{
-      return plan.period === 1 && plan.period_unit === "year" && plan.currency_code === "USD";
-    })[0];
-
-    if (!monthlyPlan || !yearlyPlan) {return "";}
-
-    const monthlyPricePennies = monthlyPlan.tiers.filter(tier=>{
-      const upperPrice = tier.ending_unit ? tier.ending_unit : Number.MAX_SAFE_INTEGER;
-
-      return tier.starting_unit <= displayCount && upperPrice >= displayCount;
-    })[0].price;
-
-    const yearlyPricePennies = yearlyPlan.tiers.filter(tier=>{
-      const upperPrice = tier.ending_unit ? tier.ending_unit : Number.MAX_SAFE_INTEGER;
-
-      return tier.starting_unit <= displayCount && upperPrice >= displayCount;
-    })[0].price;
-
-    const savingsPennies = (monthlyPricePennies * 12) - yearlyPricePennies;
-
-    const totalSavings = savingsPennies / 100 * displayCount;
-
-    return `(save $${Number((totalSavings).toFixed(2)).toLocaleString()} every year!)`;
-  }
 
   static get template() {
     return html`
@@ -264,7 +231,7 @@ class PricingSelectorComponent extends PolymerElement {
         <section id="periodSection" hidden=[[!showPeriodSection]]>
           <div id=periodContainer class="toggleContainer">
             <div id="periodYearly" on-click="setYearly" class="discountOption" selected$=[[periodYearly]]>
-              [[periodYearlyText]] [[yearlySavings]]
+              [[periodYearlyText]]
               <div hidden$=[[!periodYearly]]>
                 <img src$="[[internalPath()]]check-mark.svg" />
               </div>

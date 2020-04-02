@@ -138,27 +138,6 @@
 
           chai.assert(!hidden);
         });
-
-        it("calculates yearly price savings when pricing data is available", ()=>{
-          const component = document.querySelector("pricing-selector-component")
-
-          component.setAttribute("show-period-section", "");
-          component.pricingData = pricingData;
-
-          chai.assert.equal(component.yearlySavings, "(save $40 every year!)");
-        });
-
-        it("includes comma separator in price savings", ()=>{
-          const component = document.querySelector("pricing-selector-component")
-          const highPriceData = Array.from(pricingData);
-
-          highPriceData[2].tiers[2].price=500000;
-
-          console.log(component.displayCount);
-          console.log(highPriceData);
-          component.pricingData = highPriceData;
-          chai.assert.equal(component.yearlySavings, "(save $299,560 every year!)");
-        });
       });
     </script>
     <script class="mocha-exec">
