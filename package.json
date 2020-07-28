@@ -1,7 +1,7 @@
 {
   "name": "pricing-selector-component",
   "description": "Fetches pricing data from Chargebee",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
     "lint": "eslint pricing-selector-component.mjs",
     "pretest-ci": "npm run lint",
